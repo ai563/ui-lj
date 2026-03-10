@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Spotify - Our Playlist</title>
-    <link href="https://fonts.googleapis.com/css2?family=Circular+Std:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="icon" href="https://upload.wikimedia.org/wikipedia/commons/1/19/Spotify_logo_without_text.svg">
     <style>
         * {
             margin: 0;
@@ -33,29 +33,25 @@
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
 
-        .nav-arrows {
-            display: flex;
-            gap: 12px;
-        }
-
-        .nav-btn {
-            width: 32px;
-            height: 32px;
-            border-radius: 50%;
-            background: rgba(0, 0, 0, 0.7);
-            border: none;
-            color: white;
-            cursor: pointer;
+        .topbar{
             display: flex;
             align-items: center;
-            justify-content: center;
-            font-size: 18px;
-            transition: all 0.2s;
+            justify-content: space-between;
+            overflow: hidden;
+            padding: 8px 20px;
+            background: #000;
+            width: 100%;         
+            position: fixed;     
+            top: 0;
+            height: 50px;
+            z-index: 1000;
+            box-sizing: border-box;    
         }
 
-        .nav-btn:hover {
-            background: rgba(0, 0, 0, 0.9);
-            transform: scale(1.05);
+        .topbar-left {
+            display: flex;
+            align-items: center;
+            gap: 15px;
         }
 
         .spotify-logo {
@@ -75,6 +71,42 @@
             display: flex;
             align-items: center;
             justify-content: center;
+        }
+        
+        .search {
+            flex: 1;
+            max-width: 400px;
+            margin: 0 20px;
+            padding: 6px 12px;
+            border-radius: 20px;
+            border: none;
+            background: #242424;
+            color: white; 
+        }
+
+        .search::placeholder {
+            color: #b3b3b3;
+        }
+
+        .topbar-right {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 14px;
+        }
+
+        .topbar-right button {
+            padding: 5px 12px;
+            border-radius: 20px;
+            border: none;
+            cursor: pointer;
+        }
+
+        .login-btn {
+            background: white;
+            color: black;
+            align-items: center;
+            font-weight: bold;
         }
 
         /* Main Content */
@@ -350,6 +382,33 @@
             color: #1DB954;
         }
 
+        .floating-gif {
+            position: absolute;
+            animation: float 3s ease-in-out infinite;
+            opacity: 0;
+            animation: fadeInFloat 2s ease-out forwards;
+        }
+
+        @keyframes fadeInFloat {
+            0% {
+                opacity: 0;
+                transform: translateY(20px) scale(0.8);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
         /* Scroll Indicator */
         .scroll-indicator {
             position: fixed;
@@ -421,25 +480,33 @@
 </head>
 <body>
     <!-- Spotify Header -->
-    <div class="spotify-header">
-        <div class="nav-arrows"> 
-            <button class="nav-btn">◀</button>
-            <button class="nav-btn">▶</button>
-        </div>
-        <div class="spotify-logo">
-            <div class="spotify-icon">
-                <svg viewBox="0 0 24 24" width="20" height="20" fill="white">
-                    <path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/>
-                </svg>
+    <div class="topbar">
+        <div class="topbar-left">
+            <div class="spotify-logo">
+                <div class="spotify-icon">
+                    <svg viewBox="0 0 24 24" width="20" height="20" fill="white">
+                        <path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/>
+                    </svg>
+                </div>
             </div>
-            <span>Spotify</span>
+        </div>
+    
+        <input class="search" placeholder="What do you want to play?" />
+    
+        <div class="topbar-right">
+            <span>Premium</span>
+            <span>Support</span>
+            <span>Download</span>
+            <span>Install App</span>
+            <span>Sign up</span>
+            <button class="login-btn">hi baby</button>
         </div>
     </div>
 
     <!-- Hero Section -->
     <div class="hero">
         <img class="playlist-cover" src="cat.gif" alt="cover photo">
-        <h1 class="playlist-title">Hey Lover!</h1>
+        <h1 class="playlist-title">hey lover!</h1>
         <p class="playlist-subtitle">a special playlist for my bratty princess</p>
     </div>
 
@@ -459,28 +526,32 @@
                         4. Optional: Add the Spotify link by wrapping the song-item div with:
                            <a href="YOUR_SPOTIFY_LINK" target="_blank" style="text-decoration: none; color: inherit;">
                     -->
-                    <div class="song-item">
-                        <div class="song-number">1</div>
-                        <div class="song-info">
-                            <div class="song-name">carrot anti type beat</div>
-                            <div class="song-artist">by nugs</div>
-                            <div class="song-memory">this made me feel really special. i know you put a lot of thought into this, really appreaciate it"</div>
+                    <a href="https://open.spotify.com/playlist/0Ql0NosDC5sQdgNSrxGu6t?si=8949b094405d4e16" target="_blank" style="text-decoration: none; color: inherit;">
+                        <div class="song-item">
+                            <div class="song-number">1</div>
+                            <div class="song-info">
+                                <div class="song-name">carrot anti type beat</div>
+                                <div class="song-artist">by nugs</div>
+                                <div class="song-memory">i love love love this. and you xd</div>
+                            </div>
                         </div>
-                    </div>
-                    <div class="song-item">
-                        <div class="song-number">2</div>
-                        <div class="song-info">
-                            <div class="song-name">Invisible String</div>
-                            <div class="song-artist">Taylor Swift</div>
-                            <div class="song-memory">IFYKYK</div>
+                    </a>
+                    <a href="https://open.spotify.com/track/6VsvKPJ4xjVNKpI8VVZ3SV?si=c492ad3d85854240" target="_blank" style="text-decoration: none; color: inherit;">
+                        <div class="song-item">
+                            <div class="song-number">2</div>
+                            <div class="song-info">
+                                <div class="song-name">Invisible String</div>
+                                <div class="song-artist">by Taylor Swift</div>
+                                <div class="song-memory">Time, mystical time..</div>
+                            </div>
                         </div>
-                    </div>
+                    </a>
                     <div class="song-item">
                         <div class="song-number">3</div>
                         <div class="song-info">
                             <div class="song-name">i'm perfect for you</div>
-                            <div class="song-artist">aj</div>
-                            <div class="song-memory">:))))</div>
+                            <div class="song-artist">by aj</div>
+                            <div class="song-memory">i'll love you like you need me to</div>
                         </div>
                     </div>
                 </div>
@@ -490,7 +561,7 @@
             <div class="section">
                 <h2 class="section-title">💭 some of the stuff i have noted down over the past months...</h2>
                 <div class="memory-text">
-                    The first time I heard you sing... immediately became my favorite song...                  
+                    The first time I heard you sing... instantly became my favorite song...                  
                 </div>
                 <div class="memory-text">
                     27-10-2026
@@ -501,7 +572,7 @@
 
             <!-- Section 3: What You Mean to Me -->
             <div class="section">
-                <h2 class="section-title">💖 What You Mean to Me</h2>
+                <h2 class="section-title">What You Mean to Me</h2>
                 <div class="memory-text">
                     <!-- ⭐ CUSTOMIZE THIS: Express your feelings -->
                     Talking to you has become my favorite part of every day. You make me smile 
@@ -512,7 +583,7 @@
 
             <!-- Section 4: Leading to the Question -->
             <div class="section">
-                <h2 class="section-title">🎯 And So...</h2>
+                <h2 class="section-title">and so...</h2>
                 <div class="memory-text">
                     <!-- ⭐ CUSTOMIZE THIS: Your lead-in to the question -->
                     I've been thinking about this for a while now, and I couldn't find a better 
@@ -534,10 +605,14 @@
 
         <!-- Success Screen -->
         <div class="success-screen" id="successScreen">
+            <!-- <div id="gifContainer" style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: 1;"></div>" -->
+            
+            <!-- main content on top of gifs-->
+            <!-- <div style="position: relative; z-index: 2;"> -->
             <div class="celebration">🎉💕🎊</div>
-            <h1 class="success-title">YIPPPIEEEEE!</h1>
+            <h1 class="success-title">YIPPPIEEEEE!!!!!</h1>
             <p style="font-size: 24px; color: #b3b3b3; margin-top: 24px;">
-                ENTER TEXT HERE 💕
+                period no erase padlock tapon susi
             </p>
         </div>
     </div>
@@ -573,6 +648,9 @@
                 // Show success screen
                 document.getElementById('questionSection').style.display = 'none';
                 document.getElementById('successScreen').classList.add('active');
+
+                // scatter random GIFs
+                // scatterRandomGifs();
                 
                 // Send to ESP32
                 await sendToESP32(timestamp, unixTime);
@@ -581,6 +659,71 @@
                 createConfetti();
             } else {
                 alert('bawal nb magtanong ngaun xddd ang kapal naman ng mukha ko </3');
+            }
+        }
+
+        // Scatter random GIFs across the screen
+        function scatterRandomGifs() {
+            const gifLinks = [
+                'https://media.giphy.com/media/g9582DNuQppxC/giphy.gif',
+                'https://media.giphy.com/media/artj92V8o75VPL7AeQ/giphy.gif',  // Heart celebration
+                'https://media.giphy.com/media/KYElw07kzDspaBOwf9/giphy.gif',  // Excited celebration
+                'https://media.giphy.com/media/26u4cqiYI30juCOGY/giphy.gif',  // Fireworks
+                'https://media.giphy.com/media/26tPnAAJxXTvpLwJy/giphy.gif',  // Happy dance
+                'https://media.giphy.com/media/3oz8xAFtqoOUUrsh7W/giphy.gif',  // Love celebration
+                'https://media.giphy.com/media/l0MYt5jPR6QX5pnqM/giphy.gif',  // Yes!
+                'https://media.giphy.com/media/xUOxf0R43Ch2RMO2zK/giphy.gif',  // Confetti
+
+                // option 2: use uploaded gifs
+                // 'gif1.gif',
+                // 'gif2.gif', 
+                // can upload directly to github like cat.gif
+            ];
+
+            // random gif pick
+            const container = document.getElementById('gifContainer');
+            // const numberOfGifs = 8; // adjust to the number of uploaded gifs
+
+            if (container) {
+                container.innerHTML = '';
+            }
+
+            const numberOfGifs = 8; 
+
+            for(let i = 0; i < numberOfGifs; i++) {
+                const randomGif = gifLinks[Math.floor(Math.random() * gifLinks.length)];
+
+                // create gif element
+                const gif = document.createElement('img');
+                gif.src = scatterRandomGifs
+                gif.className = 'floating-gif';
+
+                // random size
+                const size = Math.random() * 100 + 50;
+                gif.style.width = size + 'px';
+                gif.style.height = size + 'px';
+                gif.style.objectFit = 'contain';
+                gif.style.borderRadius = '12px';
+
+                // random position  on screen
+                gif.style.left = Math.random() * 85 + '%'; // 0-85% from left
+                gif.style.top = Math.random() * 80 + '%'; // 0-85% from left
+
+                //random delay  for animation
+                gif.style.animationDelay = (Math.random() * 0.5) + 's';
+
+                // add to container
+                if (container) {
+                    container.appendChild(gif);
+                }
+
+                (function(gifElement) {
+                    setTimeout(() => {
+                        if (gifElement && gifElement.style) {
+                            gifElement.style.animation = 'fadeInFloat 2s ease-out forwards, float 3s ease-in-out infinite'
+                        } 
+                }, 100);
+                })(gif);
             }
         }
 
