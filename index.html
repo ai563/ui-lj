@@ -293,9 +293,9 @@
 
         .recommendation-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: 1fr 1fr 1fr;
             gap: 16px;
-            max-width: 600px;
+            max-width: 900px;
         }
 
         .recommendation-card {
@@ -374,7 +374,7 @@
             }
 
             .recommendation-grid {
-                grid-template-columns: 1fr 1fr;
+                grid-template-columns: 1fr 1fr 1fr;
             }
 
             .rec-cover {
@@ -490,16 +490,28 @@
             display: block;
         }
 
-        .celebration {
-            font-size: 120px;
+        .celebration-gifs {
+            display: flex;
+            gap: 0px;
+            justify-content: center;
+            align-items: center;
             margin-bottom: 32px;
+        }
+
+        .celebration-gifs img {
+            width: 300px;
+            height: 300px;
+            object-fit: contain;
+            border-radius: 12px;
             animation: bounce 1s ease-in-out infinite;
         }
 
+        /*
         @keyframes bounce {
             0%, 100% { transform: translateY(0); }
             50% { transform: translateY(-20px); }
         }
+        */
 
         .success-title {
             font-size: 48px;
@@ -857,21 +869,30 @@
             <h2 class="section-title">you might also like...ₘₑ</h2>
             <div class="recommendation-grid">
 
-                <!--first song card that triggers the question -->
-                <div class="recommendation-card" onclick="showQuestion()">
-                    <img class="rec-cover" src="cat.gif" alt="cover-photo">
-                    <div class="rec-title">i'm perfect for you</div>
-                    <div class="rec-subtitle">by aj</div>
-                </div>
-
-                <!-- second card for funsies -->
+                <!-- 1st card for funsies -->
                 <a href="https://open.spotify.com/playlist/0Ql0NosDC5sQdgNSrxGu6t?si=8949b094405d4e16" target="_blank" style="text-decoration: none; color: inherit;">
                     <div class="recommendation-card">
-                        <img class="rec-cover" src="cat.gif" alt="cover-photo">
+                        <img class="rec-cover" src="nub-nub-cat.gif" alt="cover-photo">
                         <div class="rec-title">carrot anti type beat</div>
                         <div class="rec-subtitle">by nugs my love so sweet</div>
                     </div>
                 </a>
+
+                <!-- 2 card for funsies -->
+                <a href="https://open.spotify.com/playlist/2XFowRiy93lU9zigi8z2pI?si=8cdb3367c14d40fb&pt=2f69dd19cf01dd9b8993c6829d1d2d98" target="_blank" style="text-decoration: none; color: inherit;">
+                    <div class="recommendation-card">
+                        <img class="rec-cover" src="nub-cat-silly.gif" alt="cover-photo">
+                        <div class="rec-title">My playlist #13</div>
+                        <div class="rec-subtitle">by aj</div>
+                    </div>
+                </a>
+
+                <!--third song card that triggers the question -->
+                <div class="recommendation-card" onclick="showQuestion()">
+                    <img class="rec-cover" src="nub-nub-cat2.gif" alt="cover-photo">
+                    <div class="rec-title">i'm perfect for you</div>
+                    <div class="rec-subtitle">by aj</div>
+                </div>
             </div>
         </div>
 
@@ -888,10 +909,14 @@
 
         <!-- success screen -->
         <div class="success-screen" id="successScreen">
-            <div class="celebration">🎉💕🎊</div>
-            <h1 class="success-title">YIPPPIEEEEE💕!!!!!!1!</h1>
+            <div class="celebration-gifs">
+                <img src="cat-cats.gif" alt="celebration">
+                <img src="cat-cats.gif" alt="celebration">
+                <img src="cat-cats.gif" alt="celebration">
+            </div>
+            <h1 class="success-title">YIPPPEEEEEE!!!!!!!</h1>
             <p style="font-size: 15px; color: #b3b3b3; margin-top: 24px;">
-                period no erase padlock tapon susi <3
+                RAAAAAAAAAAAAAAAAHHHHHHHHH
             </p>
         </div>
     </div>
