@@ -19,7 +19,7 @@
             overflow-x: hidden;
         }
 
-        /* Spotify Header */
+        /* header logo */
         .spotify-header {
             background: rgba(0, 0, 0, 0.8);
             backdrop-filter: blur(10px);
@@ -109,7 +109,7 @@
             font-weight: bold;
         }
 
-        /* Main Content */
+        /* Main content */
         .content {
             max-width: 1400px;
             margin: 0 auto;
@@ -177,7 +177,7 @@
             font-size: 8px;
         }
 
-        /* Song List Section */
+        /* Song list */
         .song-list-section {
             padding: 0 40px;
             margin-bottom: 60px;
@@ -229,7 +229,7 @@
             display: inline;
         }
 
-        /* on hover, hide number and show play btn */
+        /* hide number and show play btn on hover over song #*/
         .song-row:hover .number-text {
             display: none;
         }
@@ -280,7 +280,7 @@
             font-size: 14px;
         }
 
-        /* Recommendation Section */
+        /* Reco section */
         .recommendation-section {
             padding: 0 40px 60px;
         }
@@ -335,7 +335,7 @@
             color: #b3b3b3;
         }
 
-        /* Question Section */
+        /* Question screen */
         .question-section {
             display: none;
             text-align: center;
@@ -478,7 +478,7 @@
             transform: scale(1.05);
         }
 
-        /* Success Screen */
+        /* Success screen */
         .success-screen {
             display: none;
             text-align: center;
@@ -506,7 +506,7 @@
             animation: bounce 1s ease-in-out infinite;
         }
 
-        /*
+        /* removed - uncomment if needed
         @keyframes bounce {
             0%, 100% { transform: translateY(0); }
             50% { transform: translateY(-20px); }
@@ -547,7 +547,7 @@
             }
         }
 
-        /* Scroll Indicator */
+        /* Scroll indicator */
         .scroll-indicator {
             position: fixed;
             bottom: 40px;
@@ -927,7 +927,7 @@
     </div>
 
     <script>
-        // ⭐⭐⭐ IMPORTANT: CONFIGURE YOUR ESP32 IP ADDRESS HERE ⭐⭐⭐
+        //  config ESP32 IP Address here.. Upload code to microcontrolelr
         const ESP32_IP = 'https://unwalked-unelementary-lakenya.ngrok-free.dev'; // http://192.168.1.237 // Change this to your ESP32's IP address
         
         let officialTimestamp = null;
@@ -966,7 +966,7 @@
                 document.getElementById('questionSection').style.display = 'none';
                 document.getElementById('successScreen').classList.add('active');
 
-                // scatter random GIFs
+                // scatter random GIFs - removed - changed from scattered gifs to single liner
                 // scatterRandomGifs();
                 
                 // Send to ESP32
